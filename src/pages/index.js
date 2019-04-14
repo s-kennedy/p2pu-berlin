@@ -1,13 +1,19 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
+import { Search, BrowseCourses } from 'p2pu-search-cards';
+import { EditableText, EditableParagraph, EditableImageUpload } from "react-easy-editables";
+import { uploadImage } from "../firebase/operations";
+
 import {
   updatePage,
   loadPageData,
 } from "../redux/actions";
 
 import Layout from "../layouts/default.js";
-import { EditableText, EditableParagraph } from "react-easy-editables";
+import HeaderTextCarousel from "../components/common/HeaderTextCarousel";
+
+import "p2pu-search-cards/dist/build.css"
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -42,20 +48,58 @@ class HomePage extends React.Component {
     this.props.onUpdatePageData("home", id, content);
   };
 
+  handleSelectResult = (props) => {
+    console.log(props)
+  }
+
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
 
     return (
       <Layout>
+        <section id="landing">
+          <div className="container">
+            <div className="row">
+              <div className="col-12 my-5 pt-5">
+                <div id="header-text-carousel">
+                  <HeaderTextCarousel />
+                </div>
+              </div>
+            </div>
 
-        <section className="no-padding">
-          <EditableText content={content["demo-title"]} handleSave={this.onSave("demo-title")} />
+            <div className="row align-items-center">
+              <div className="col-md-6 my-5">
+                <div className="bg-pattern circle">
+                  <div className="img-fluid mouse-parallax">
+                    <EditableImageUpload content={content["intro-image"]} handleSave={this.onSave("intro-image")} uploadImage={uploadImage} />
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-6 my-5" data-aos="slide-left">
+                <div className="mb-4 subtitle"><EditableText content={content["intro-header"]} handleSave={this.onSave("intro-header")} /></div>
+                <EditableParagraph content={content["intro-description"]} handleSave={this.onSave("intro-description")} />
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section id="about" className="wow fadeIn">
-          <EditableParagraph content={content["demo-description"]} handleSave={this.onSave("demo-description")} />
+        <section id="courses">
+          <div className="container">
+            <header className="text-center my-5">
+              <h2>
+                <EditableText content={content["courses-header"]} handleSave={this.onSave("courses-header")} />
+              </h2>
+            </header>
+            <div className="mx-4">
+              <Search
+                searchSubject={'courses'}
+                Browse={BrowseCourses}
+                onSelectResult={this.handleSelectResult}
+              />
+            </div>
+          </div>
         </section>
-
       </Layout>
     );
   }

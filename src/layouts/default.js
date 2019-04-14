@@ -5,15 +5,19 @@ import withRoot from '../utils/withRoot';
 
 import Notification from "../components/notifications/Notification";
 import AccountButton from "../components/navigation/AccountButton"
+import Navigation from "../components/navigation/Navigation"
+import Footer from "../components/common/Footer"
 
 import {
   EditablesContext,
   theme
 } from 'react-easy-editables';
 
+import "p2pu-theme/dist/base.css";
+import "p2pu-input-fields/dist/build.css"
 import "../assets/sass/less-cms/base.scss";
 
-import favicon from '../assets/images/icon.png'
+import favicon from '../assets/images/favicon.ico'
 
 
 const styles = {
@@ -38,7 +42,7 @@ const DefaultLayout = props => (
   <div style={styles.container}>
     <Helmet>
       <title>
-        React CMS Starter
+        P2PU Berlin
       </title>
       <meta
         charSet="utf-8"
@@ -47,15 +51,20 @@ const DefaultLayout = props => (
         viewport="width=device-width,initial-scale=1.0,maximum-scale=1"
       />
       <link rel="icon" href={favicon} type="image/x-icon" />
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     </Helmet>
     <Notification />
     <AccountButton />
+    <Navigation />
 
     <EditablesContext.Provider value={ { theme: theme, showEditingControls: props.isEditingPage } }>
-      <div className="page-wrapper">
-        <Fragment>{props.children}</Fragment>
-      </div>
+      <main className="page-content">
+        <div className="wrap">
+          <Fragment>{props.children}</Fragment>
+        </div>
+      </main>
     </EditablesContext.Provider>
+    <Footer />
   </div>
 );
 
