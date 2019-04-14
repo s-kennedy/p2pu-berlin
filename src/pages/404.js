@@ -15,7 +15,7 @@ const NotFoundPage = props => (
   <Layout>
     <Grid container justify="center" className={props.classes.container}>
       <Grid item>
-        <Typography variant="display1" gutterBottom>
+        <Typography variant="h1" gutterBottom>
           NOT FOUND
         </Typography>
         <p>This page does not exist.</p>

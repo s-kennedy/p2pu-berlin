@@ -6,20 +6,7 @@ module.exports = {
   },
   pathPrefix: `/`,
   plugins: [
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: "React CMS starter",
-        short_name: "React CMS starter",
-        start_url: "/",
-        background_color: "#000",
-        theme_color: "#FCB239", // yellow
-        display: "minimal-ui",
-        icon: "static/icon.png" // This path is relative to the root of the site.
-      },
-    },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-offline`,
     {
       resolve: "gatsby-source-firebase",
       options: {

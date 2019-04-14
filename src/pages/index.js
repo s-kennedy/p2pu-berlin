@@ -35,7 +35,6 @@ const mapStateToProps = state => {
 class HomePage extends React.Component {
 
   componentDidMount() {
-    console.log(this.props)
     const initialPageData = {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
@@ -76,7 +75,7 @@ class HomePage extends React.Component {
                 </div>
               </div>
 
-              <div className="col-md-6 my-5" data-aos="slide-left">
+              <div className="col-md-6 my-5" data-aos="fade-in">
                 <div className="mb-4 subtitle"><EditableText content={content["intro-header"]} handleSave={this.onSave("intro-header")} /></div>
                 <EditableParagraph content={content["intro-description"]} handleSave={this.onSave("intro-description")} />
               </div>

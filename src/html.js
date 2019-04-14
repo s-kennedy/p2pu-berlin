@@ -32,7 +32,6 @@ export default class HTML extends React.Component {
           <script src="https://d3gh4aef1l5qvi.cloudfront.net/base.js"></script>
           <script src={ withPrefix("/js/mouse-parallax/tweenmax.min.js")} type="text/javascript"></script>
           <script src={ withPrefix("/js/mouse-parallax/jquery-parallax.js")} type="text/javascript"></script>
-          <script src={ withPrefix("/js/accordion.js")} type="text/javascript"></script>
           <script src={ withPrefix("/js/home.js")} type="text/javascript"></script>
         </body>
       </html>
