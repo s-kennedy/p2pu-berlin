@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
-import { Search, BrowseCourses } from 'p2pu-search-cards';
+import { Search, BrowseLearningCircles } from 'p2pu-search-cards';
 import { EditableText, EditableParagraph, EditableImageUpload } from "react-easy-editables";
 import { uploadImage } from "../firebase/operations";
 
@@ -93,8 +93,8 @@ class HomePage extends React.Component {
             </header>
             <div className="mx-4">
               <Search
-                searchSubject={'courses'}
-                Browse={BrowseCourses}
+                searchSubject={'learningCircles'}
+                Browse={BrowseLearningCircles}
                 onSelectResult={this.handleSelectResult}
               />
             </div>
