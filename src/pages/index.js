@@ -34,7 +34,8 @@ const mapStateToProps = state => {
 
 class HomePage extends React.Component {
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     const initialPageData = {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
