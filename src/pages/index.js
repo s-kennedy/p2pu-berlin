@@ -53,7 +53,7 @@ class HomePage extends React.Component {
   }
 
   render() {
-    const content = this.props.pageData ? this.props.pageData.content : {};
+    const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
 
     return (
       <Layout>
